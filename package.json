@@ -1,0 +1,33 @@
+{
+  "name": "lerna-release-workflow",
+  "private": true,
+  "author": "Jon Wahlström <ejfwahlstrom@gmail.com>",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/erdoganoksuz/changeset.git"
+  },
+  "workspaces": [
+    "packages/*"
+  ],
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/"
+  },
+  "scripts": {
+    "commit": "git-cz",
+    "changeset": "changeset",
+    "bootstrap": "npx lerna bootstrap",
+    "publish:ci": "lerna run prepublish && changeset publish",
+    "version:ci": "changeset version"
+  },
+  "devDependencies": {
+    "@changesets/cli": "^2.17.0",
+    "commitizen": "^4.2.3",
+    "cz-conventional-changelog": "^3.1.0",
+    "lerna": "^4.0.0"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  }
+}
